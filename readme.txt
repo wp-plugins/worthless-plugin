@@ -6,7 +6,7 @@ Requires at least: 2.5
 Tested up to: 2.6
 Stable tag: 1.1
 
-A worthless plugin doing worthless stuff with features not worth mentioning.
+A silly plugin doing silly and useless stuff. Try it, it's great fun! This unique plugin is a must to at least try for a few days!
 
 == Description ==
 
@@ -26,7 +26,7 @@ For detailed instructions go [here](http://meandmymac.net/plugins/worthless-plug
 == Frequently Asked Questions ==
 
 **Visit here for the FAQ and support:**
-[Support page](http://meandmymac.net/contact-and-support/general/)
+[Support page](http://forum.at.meandmymac.net/)
 
 == Screenshots ==
 
