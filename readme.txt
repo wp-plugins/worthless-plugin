@@ -10,11 +10,11 @@ A silly plugin doing silly and useless stuff. Try it, it's great fun! This uniqu
 
 == Description ==
 
-That’s right… There are over 2000 plugins registered at wordpress.org repositories. And all of them have a purpose. Do something useful or are otherwise not-worthless.
+That's right... There are over 2000 plugins registered at wordpress.org repositories. And all of them have a purpose. Do something useful or are otherwise not-worthless.
 
-This plugin is different and therefor unique from all of them; It is not useful to use this plugin. It doesn’t do anything interesting (which is kinda interesting in itself) and does not enrich your site with new features or functions.
+This plugin is different and therefor unique from all of them; It is not useful to use this plugin. It doesn't do anything interesting (which is kinda interesting in itself) and does not enrich your site with new features or functions.
 
-So what does it do? Upon activation it sets the goal at a default of 300 and generates a random number out of that. Then it starts counting… When it reaches the random set number, something happens (non-violent or destructive, honestly. It’s all about the fun!) and the random number is reset to another random value and starts counting again… FRIGGEN USELESS!! yay! Amazing isn’t it?
+So what does it do? Upon activation it sets the goal at a default of 300 and generates a random number out of that. Then it starts counting... When it reaches the random set number, something happens (non-violent or destructive, honestly. It's all about the fun!) and the random number is reset to another random value and starts counting again... FRIGGEN USELESS!! yay! Amazing isn't it?
 
 **Features**
 
