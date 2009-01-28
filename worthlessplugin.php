@@ -329,6 +329,8 @@ function worthless_check_config() {
 -------------------------------------------------------------*/
 function worthless_options_submit() {
 	$buffer = get_option('worthless_config');
+	$buffer2 = get_option('worthless_tracker');
+
 	
 	$seed 		= $_POST['worthless_saved'];
 	$register 	= $_POST['worthless_register'];
@@ -348,6 +350,7 @@ function worthless_options_submit() {
 
 	$tracker['register']			= $register;
 	$tracker['anonymous']			= $anonymous;
+	if($tracker['register'] == 'N' AND $buffer2['register'] == 'Y') { worthless_send_data('Opt-out'); }
 	update_option('worthless_tracker', $tracker);
 }
 ?>
