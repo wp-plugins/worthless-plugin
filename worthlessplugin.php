@@ -4,7 +4,7 @@ Plugin Name: Worthless Plugin
 Plugin URI: http://meandmymac.net/plugins/worthless-plugin/
 Description: A worthless plugin doing worthless things.
 Author: Arnan de Gans
-Version: 2.0
+Version: 2.0.2
 Author URI: http://meandmymac.net
 */ 
 
@@ -24,7 +24,6 @@ if(isset($_POST['worthless_submit_options'])) {
 }
 
 $worthless_config = get_option('worthless_config');
-$worthless_tracker = get_option('worthless_tracker');
 
 /*-------------------------------------------------------------
  Name:      worthless_dashboard
@@ -46,7 +45,6 @@ function worthless_dashboard() {
 -------------------------------------------------------------*/
 function worthless_dashboard_options() {
 	$worthless_config = get_option('worthless_config');
-	$worthless_tracker = get_option('worthless_tracker');
 ?>
 	<div class="wrap">
 	  	<h2>Worthless options</h2>
@@ -84,36 +82,6 @@ function worthless_dashboard_options() {
 			</tr>
 			</table>
 
-	    	<h3>Registration</h3>	    	
-	
-	    	<table class="form-table">
-			<tr>
-				<th scope="row" valign="top">Why</th>
-				<td>For fun and as an experiment i would like to gather some information and develop a simple stats system for it. I would like to ask you to participate in this experiment. All it takes for you is to not opt-out. More information is found <a href="http://meandmymac.net/plugins/data-project/" title="http://meandmymac.net/plugins/data-project/ - New window" target="_blank">here</a>. Any questions can be directed to the <a href="http://forum.at.meandmymac.net/" title="http://forum.at.meandmymac.net/ - New window" target="_blank">forum</a>.</td>
-				
-			</tr>
-			<tr>
-				<th scope="row" valign="top">Participate</th>
-				<td><input type="checkbox" name="worthless_register" <?php if($worthless_tracker['register'] == 'Y') { ?>checked="checked" <?php } ?> /> Allow Meandmymac.net to collect some data about the plugin usage and your blog.<br /><em>This includes your blog name, blog address, email address and a selection of triggered events as well as the name and version of this plugin.</em></td>
-			</tr>
-			<tr>
-				<th scope="row" valign="top">Anonymously</th>
-				<td><input type="checkbox" name="worthless_anonymous" <?php if($worthless_tracker['anonymous'] == 'Y') { ?>checked="checked" <?php } ?> /> Your blog name, blog address and email will not be send.</td>
-			</tr>
-			<tr>
-				<th scope="row" valign="top">Agree</th>
-				<td><strong>Upon activating the plugin you agree to the following:</strong>
-
-				<br />- All gathered information, but not your email address, may be published or used in a statistical overview for reference purposes.
-				<br />- You're free to opt-out or to make any to be gathered data anonymous at any time.
-				<br />- All acquired information remains in my database and will not be sold, made public or otherwise spread to third parties.
-				<br />- If you opt-out or go anonymous, all previously saved data will remain intact.
-				<br />- Requests to remove your data or make everything you sent anonymous will not be granted unless there are pressing issues.
-				<br />- Anonymously gathered data cannot be removed since it's anonymous.
-				</td>
-			</tr>
-	    	</table>
-
 			<p class="submit">
 				<input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 			</p>
@@ -131,14 +99,12 @@ function worthless_dashboard_options() {
  Return:	-none-
 ------------------------------------------------------------- */
 function worthless_undertaker() {
-	global $worthless_config, $worthless_tracker;
+	global $worthless_config;
 	
 	$saved		= $worthless_config['saved'];
 	$event		= $worthless_config['event'];
 	$logged 	= $worthless_config['logged'];
 	$current 	= $worthless_config['current'];
-
-	$register 	= $worthless_tracker['register'];
 
 	$option['saved'] = $saved; // Never changes at this point, only from the dashboard
 	if($current >= $event) {
@@ -146,10 +112,6 @@ function worthless_undertaker() {
 		$option['event'] 	= worthless_random_seed($saved);
 		$option['logged'] 	= $logged+1;
 		$option['current']	= 0;
-		
-		// Initiate a random event
-		if($register == 'Y') { worthless_send_data('Event'); }
-		worthless_random_event($option['logged'], $option['event']);
 	} else {
 		// Nothing to see, count a new hit
 		$option['event'] 	= $event;
@@ -200,56 +162,6 @@ function worthless_random_event($logged, $event) {
 }
 
 /*-------------------------------------------------------------
- Name:      worthless_send_data
-
- Purpose:   Register events at meandmymac.net's database
- Receive:   $action
- Return:    -none-
--------------------------------------------------------------*/
-function worthless_send_data($action) {
-	$worthless_tracker = get_option('worthless_tracker');
-	
-	// Prepare data
-	$date			= date('U');
-	$plugin			= 'Worthless Plugin';
-	$version		= '2.0';
-	//$action -> pulled from function args
-	
-	// User choose anonymous?
-	if($worthless_tracker['anonymous'] == 'Y') {
-		$ident 		= 'Anonymous';
-		$blogname 	= 'Anonymous';
-		$blogurl	= 'Anonymous';
-		$email		= 'Anonymous';
-	} else {
-		$ident 		= md5(get_option('siteurl'));
-		$blogname	= get_option('blogname');
-		$blogurl	= get_option('siteurl');
-		$email		= get_option('admin_email');			
-	}
-	
-	// Build array of data
-	$post_data = array (
-		'headers'	=> null,
-		'body'		=> array(
-			'ident'		=> $ident,
-			'blogname' 	=> base64_encode($blogname),
-			'blogurl'	=> base64_encode($blogurl),
-			'email'		=> base64_encode($email),
-			'date'		=> $date,
-			'plugin'	=> $plugin,
-			'version'	=> $version,
-			'action'	=> $action,
-		),
-	);
-
-	// Destination
-	$url = 'http://stats.meandmymac.net/receiver.php';
-
-	wp_remote_post($url, $post_data);
-}
-
-/*-------------------------------------------------------------
  Name:      worthless_activate
 
  Purpose:   Activation script
@@ -257,7 +169,6 @@ function worthless_send_data($action) {
  Return:    -none-
 -------------------------------------------------------------*/
 function worthless_activate() {
-	worthless_send_data('Activate');
 }
 
 /*-------------------------------------------------------------
@@ -268,7 +179,6 @@ function worthless_activate() {
  Return:    -none-
 -------------------------------------------------------------*/
 function worthless_deactivate() {
-	worthless_send_data('Deactivate');
 }
 
 /*-------------------------------------------------------------
@@ -313,11 +223,6 @@ function worthless_check_config() {
 		$option['current'] 					= '0';
 		update_option('worthless_config', $option);
 	}
-	if ( !$tracker = get_option('worthless_tracker') ) {
-		$tracker['register']				= 'Y';
-		$tracker['anonymous']				= 'N';
-		update_option('worthless_tracker', $tracker);
-	}
 }
 
 /*-------------------------------------------------------------
@@ -329,28 +234,13 @@ function worthless_check_config() {
 -------------------------------------------------------------*/
 function worthless_options_submit() {
 	$buffer = get_option('worthless_config');
-	$buffer2 = get_option('worthless_tracker');
 
-	
 	$seed 		= $_POST['worthless_saved'];
-	$register 	= $_POST['worthless_register'];
-	$anonymous 	= $_POST['worthless_anonymous'];
-	
-	if(isset($register)) $register = 'Y';			
-		else $register = 'N';
-		
-	if(isset($anonymous)) $anonymous = 'Y';			
-		else $anonymous = 'N';
-		
+			
 	$option['saved']	 			= $seed;
 	$option['event']	 			= worthless_random_seed($seed);
 	$option['logged']	 			= $buffer['logged'];
 	$option['current']	 			= $buffer['current'];
 	update_option('worthless_config', $option);
-
-	$tracker['register']			= $register;
-	$tracker['anonymous']			= $anonymous;
-	if($tracker['register'] == 'N' AND $buffer2['register'] == 'Y') { worthless_send_data('Opt-out'); }
-	update_option('worthless_tracker', $tracker);
 }
 ?>
