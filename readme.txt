@@ -3,8 +3,8 @@ Contributors: Arnan de Gans
 Donate link: http://meandmymac.net/donate/
 Tags: plugin, admin, worthless 
 Requires at least: 2.7
-Tested up to: 3.4.1
-Stable tag: 2.0.2
+Tested up to: 3.5
+Stable tag: 2.0.3
 
 A silly plugin doing nothing. Try it, it's great fun! This unique plugin is a must to at least try for a few days!
 

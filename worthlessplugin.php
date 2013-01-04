@@ -4,7 +4,7 @@ Plugin Name: Worthless Plugin
 Plugin URI: http://meandmymac.net/plugins/worthless-plugin/
 Description: A worthless plugin doing worthless things.
 Author: Arnan de Gans
-Version: 2.0.2
+Version: 2.0.3
 Author URI: http://meandmymac.net
 */ 
 
@@ -53,7 +53,7 @@ function worthless_dashboard_options() {
 
 	    	<table class="form-table">
 			<tr>
-				<td colspan="4" bgcolor="#DDD">This page is for some number crunching. And one worthless setting!</td>
+				<td colspan="4" bgcolor="#DDD">This page is for one worthless setting!</td>
 			</tr>
 			<tr>
 				<th scope="row">Busy?</th>
