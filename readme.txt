@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: Arnan de Gans
 Donate link: http://meandmymac.net/donate/
-Tags: plugin, admin, worthless 
+Tags: plugin, admin, worthless, dashboard, fun, stats, statistics, email, notification
 Requires at least: 2.7
 Tested up to: 3.5
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 
 A silly plugin doing nothing. Try it, it's great fun! This unique plugin is a must to at least try for a few days!
 
@@ -19,6 +19,11 @@ So what does it do? Nothing! FRIGGEN USELESS!! yay! Amazing isn't it?
 **Features**
 
 * None :)
+
+== Changelog ==
+
+= 2.0.4 FREE =
+* [fix] Nonce security added
 
 == Installation ==
 
