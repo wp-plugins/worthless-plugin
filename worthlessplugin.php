@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Worthless Plugin
-Plugin URI: http://meandmymac.net/plugins/worthless-plugin/
-Description: A worthless plugin doing worthless things.
+Plugin URI: http://meandmymac.net/plugins/worthless-plugin/?pk_campaign=worthlessplugin-pluginpage
 Author: Arnan de Gans
+Author URI: http://meandmymac.net?pk_campaign=worthlessplugin-pluginpage
+Description: A worthless plugin doing worthless things.
 Version: 2.0.4
-Author URI: http://meandmymac.net
 */ 
 
 #---------------------------------------------------
