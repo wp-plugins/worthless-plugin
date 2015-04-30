@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: Arnan de Gans
-Donate link: http://meandmymac.net/donate/
+Donate link: http://meandmymac.net/donate/?pk_campaign=worthlessplugin-readme
 Tags: plugin, admin, worthless, dashboard, fun, stats, statistics, email, notification
-Requires at least: 2.7
-Tested up to: 3.5
+Requires at least: 3.0
+Tested up to: 4.2.1
 Stable tag: 2.0.4
 
 A silly plugin doing nothing. Try it, it's great fun! This unique plugin is a must to at least try for a few days!
@@ -28,7 +28,7 @@ So what does it do? Nothing! FRIGGEN USELESS!! yay! Amazing isn't it?
 == Installation ==
 
 You unzip the file and put the folder in the wp-content/plugins/ folder. Then you go to the plugins page and activate the plugin.
-For detailed instructions go [here](http://meandmymac.net/plugins/worthless-plugin/).
+For detailed instructions go [here](http://meandmymac.net/plugins/worthless-plugin/?pk_campaign=worthlessplugin-readme).
 
 == Frequently Asked Questions ==
 
