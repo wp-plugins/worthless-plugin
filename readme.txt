@@ -3,7 +3,7 @@ Contributors: Arnan de Gans
 Donate link: http://meandmymac.net/donate/?pk_campaign=worthlessplugin-readme
 Tags: plugin, admin, worthless, dashboard, fun, stats, statistics, email, notification
 Requires at least: 3.0
-Tested up to: 4.2.1
+Tested up to: 4.2.2
 Stable tag: 2.0.4
 
 A silly plugin doing nothing. Try it, it's great fun! This unique plugin is a must to at least try for a few days!
